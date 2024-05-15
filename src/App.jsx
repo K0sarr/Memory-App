@@ -1,17 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
 import Card from './components/Card'
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-     <div className='App'>
-      <Card />
-     </div>
+     <CssBaseline />
+      <Container>
+        <Box sx={{ m: 2 }}>
+          <Card />
+        </Box>
+      </Container>
     </>
   )
 }
