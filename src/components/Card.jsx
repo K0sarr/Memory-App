@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from "react"
 import { getPokemons, GET_POKEMONS } from "../api/PokemonApi"
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
 export default function Card() {
     const [cards, setCards] = useState([]);
@@ -38,11 +41,31 @@ export default function Card() {
         console.log("Cards state updated:", cards);
       }, [cards]);
   
+      const Item = styled(Paper)(() => ({
+        backgroundColor: '#98d6a9',
+        padding: 8,
+        textAlign: 'center',
+        color: 'black',
+      }));
 
 
 
     return (
-    <div className="card-container">
+      <>
+      <Grid container spacing={4}>
+        {cards.map((card) => (
+          <Grid item xs={3} key={card.id}>
+            <Item elevation={3}>
+              <img src={card.image} alt={card.name} />
+              <p>{card.name}</p>
+            </Item>
+            </Grid>
+        ))}
+
+      </Grid>
+
+
+    {/* <div className="card-container">
                 <h1>HELLO</h1>
         <div className="cards">
                 {cards.map((card) => {
@@ -56,6 +79,7 @@ export default function Card() {
                     );
                 })}
             </div>
-            </div>
+            </div> */}
+            </>
     )
 }
