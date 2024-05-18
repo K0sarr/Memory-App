@@ -3,6 +3,7 @@ import { getPokemons, GET_POKEMONS } from "../api/PokemonApi"
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import '../styles/card.css'
 
 export default function Card() {
     const [cards, setCards] = useState([]);
@@ -56,7 +57,9 @@ export default function Card() {
         {cards.map((card) => (
           <Grid item xs={3} key={card.id}>
             <Item elevation={3}>
+            <button className="card_button">
               <img src={card.image} alt={card.name} />
+            </button>
               <p>{card.name}</p>
             </Item>
             </Grid>
