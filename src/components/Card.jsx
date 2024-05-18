@@ -49,6 +49,15 @@ export default function Card() {
         color: 'black',
       }));
 
+      function handleClick() {
+        console.log('hello')
+
+
+
+
+
+      }
+
 
 
     return (
@@ -57,32 +66,14 @@ export default function Card() {
         {cards.map((card) => (
           <Grid item xs={3} key={card.id}>
             <Item elevation={3}>
-            <button className="card_button">
+            <button className="card_button" onClick={handleClick}>
               <img src={card.image} alt={card.name} />
             </button>
               <p>{card.name}</p>
             </Item>
             </Grid>
         ))}
-
       </Grid>
-
-
-    {/* <div className="card-container">
-                <h1>HELLO</h1>
-        <div className="cards">
-                {cards.map((card) => {
-                    return (
-                    <div key={card.id} className="card"> 
-                    <img src={card.image} alt={card.name} />
-                    <p>{card.name}</p>
-                    
-                    
-                    </div>
-                    );
-                })}
-            </div>
-            </div> */}
             </>
     )
 }
