@@ -7,6 +7,8 @@ import '../styles/card.css'
 
 export default function Card() {
     const [cards, setCards] = useState([]);
+    const [score, setScore] = useState(0);
+    const [selectedId, setSelectedId] = useState(new Set());
     
 
 
@@ -36,11 +38,6 @@ export default function Card() {
     
         fetchData();
       }, []);
-    
-      useEffect(() => {
-        // Log to check the state whenever it updates
-        console.log("Cards state updated:", cards);
-      }, [cards]);
   
       const Item = styled(Paper)(() => ({
         backgroundColor: '#98d6a9',
@@ -49,24 +46,35 @@ export default function Card() {
         color: 'black',
       }));
 
-      function handleClick() {
-        console.log('hello')
 
+      function handleClick(cardId) {
+        if (selectedId.has(cardId)) {
+          alert('Game Over! You selected the same card twice.');
+          setScore(0);
+          setSelectedId(new Set()); // Reset both score and users selectedIds.
+          console.log('true')
+        } else {
+          const newSelectedId = new Set(selectedId);
+          newSelectedId.add(cardId);
+          setSelectedId(newSelectedId);
+          const shuffledCards = [...cards.sort(() => Math.random() - 0.5)];
+          setCards(shuffledCards);
+          setScore(score +1);
+          console.log('else')
 
-
-
+        }
 
       }
 
 
-
     return (
       <>
+        <p>Score: {score}</p>
       <Grid container spacing={4}>
         {cards.map((card) => (
           <Grid item xs={3} key={card.id}>
             <Item elevation={3}>
-            <button className="card_button" onClick={handleClick}>
+            <button className="card_button" onClick={() => handleClick(card.id)}>
               <img src={card.image} alt={card.name} />
             </button>
               <p>{card.name}</p>
