@@ -8,6 +8,7 @@ import '../styles/card.css'
 export default function Card() {
     const [cards, setCards] = useState([]);
     const [score, setScore] = useState(0);
+    const [bestScore, setBestScore] = useState(0);
     const [selectedId, setSelectedId] = useState(new Set());
     
 
@@ -39,20 +40,29 @@ export default function Card() {
         fetchData();
       }, []);
   
-      const Item = styled(Paper)(() => ({
+      const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: '#98d6a9',
         padding: 8,
         textAlign: 'center',
         color: 'black',
-      }));
+        [theme.breakpoints.down('sm')]: {
+            padding: 4,
+        },
+        [theme.breakpoints.down('xs')]: {
+          backgroundColor: '#ffffff',
+          padding: 2,
+        },
+    }));
 
 
       function handleClick(cardId) {
         if (selectedId.has(cardId)) {
           alert('Game Over! You selected the same card twice.');
+          if (bestScore <= score) { // Update bestscore only if the score is higher than bestScore.
+            setBestScore(score);
+          }
           setScore(0);
           setSelectedId(new Set()); // Reset both score and users selectedIds.
-          console.log('true')
         } else {
           const newSelectedId = new Set(selectedId);
           newSelectedId.add(cardId);
@@ -60,8 +70,6 @@ export default function Card() {
           const shuffledCards = [...cards.sort(() => Math.random() - 0.5)];
           setCards(shuffledCards);
           setScore(score +1);
-          console.log('else')
-
         }
 
       }
@@ -69,15 +77,16 @@ export default function Card() {
 
     return (
       <>
-        <p>Score: {score}</p>
+        <p className="score-text">Score: {score}</p>
+        <p className="bestScore-text">Best Score: {bestScore}</p>
       <Grid container spacing={4}>
         {cards.map((card) => (
-          <Grid item xs={3} key={card.id}>
+          <Grid item xs={6} sm={6} md={3} key={card.id}>
             <Item elevation={3}>
             <button className="card_button" onClick={() => handleClick(card.id)}>
               <img src={card.image} alt={card.name} />
             </button>
-              <p>{card.name}</p>
+              <p className="poke-text">{card.name}</p>
             </Item>
             </Grid>
         ))}

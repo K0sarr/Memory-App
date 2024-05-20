@@ -13,4 +13,48 @@
     box-shadow: 0 0 20px rgba(6, 28, 221, 0.6); /* Add this line */
 }
 
+/* Media query for screens smaller than 600px */
 
+
+/* Media query for screens smaller than 400px */
+
+
+/* Media query for the smallest screens (e.g., smaller than 400px) */
+@media (max-width: 550px) {
+    .card_button {
+        background-color: transparent; /* Remove background color */
+        color: black; /* Change text color */
+        padding: 0; /* Remove padding */
+        font-size: 10px; /* Further adjust font size */
+        border: none; /* Remove border */
+        border-radius: 0; /* Remove border radius */
+        box-shadow: none; /* Remove box-shadow */
+    }
+
+    .card_button:hover {
+        box-shadow: none; /* Remove hover effect */
+    }
+}
+
+.score-text {
+    text-align: end;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 1px;
+}
+
+.bestScore-text {
+    text-align: end;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.poke-text {
+    font-family: 'Leckerli', monospace;
+    font-size: 22px;
+    color: #8aa0e7;
+    margin-bottom: 10px;
+}
