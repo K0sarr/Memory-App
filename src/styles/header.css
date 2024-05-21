@@ -4,3 +4,27 @@
     font-size: 40px;
 }
 
+/* Adjust H1 Title when screen is smaller*/
+@media (max-width: 590px) {
+    .header-title h1 {
+        font-size: 25px;
+        margin-right: 125px;
+    }
+}
+
+@media (max-width: 400px) {
+    .header-title h1 {
+        font-size: 20px;
+    }
+}
+
+.score-title {
+    /* border: 1px solid red; */
+    margin: 0 0 20px;
+    padding: 10px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+}
