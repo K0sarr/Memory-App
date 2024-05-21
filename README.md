@@ -14,7 +14,7 @@ This project is part of The Odin Project's React course. It was created to learn
 - MUI (Material-UI): A popular React UI framework that provides pre-designed components to build stylish and responsive applications.
 - **Vite**: A modern frontend tooling system for faster build times and optimized production bundles.
 - **Netlify**: A cloud platform for static site hosting and serverless functions, used to deploy the project.
-- > [Live Website](https://cv-application-top.netlify.app/)
+- > [Netlify](https://memorykos.netlify.app/)
   
   ## Tools/Languages
 
